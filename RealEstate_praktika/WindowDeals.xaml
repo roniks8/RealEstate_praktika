@@ -1,0 +1,59 @@
+﻿<Window x:Class="RealEstate_praktika.WindowDeals"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RealEstate_praktika"
+        mc:Ignorable="d"
+        Title="WindowDeals" Height="500" Width="1000" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label Content="Предложение" Grid.Row="0" Margin="5,0,0,0"/>
+        <DataGrid x:Name="SupplyDataGrid" Grid.Row="0" Grid.ColumnSpan="2" Margin="10,20,20,20" IsReadOnly="True" AutoGenerateColumns="False" SelectionChanged="SupplyDataGrid_SelectionChanged">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Тип" Binding="{Binding Type}" />
+                <DataGridTextColumn Header="Объект недвижимости" Binding="{Binding FullRealtEstate}" />
+                <DataGridTextColumn Header="Цена" Binding="{Binding Price}" />
+                <DataGridTextColumn Header="Клиент" Binding="{Binding FullClient}" />
+                <DataGridTextColumn Header="Агент" Binding="{Binding FullAgent}" />
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Потребность" Grid.Row="1" Margin="5,0,0,0"/>
+        <DataGrid x:Name="DemandDataGrid" Grid.Row="1" Grid.ColumnSpan="2" Margin="10,20,20,20" IsReadOnly="True" AutoGenerateColumns="False" SelectionChanged="DemandDataGrid_SelectionChanged">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Тип" Binding="{Binding Type}" />
+                <DataGridTextColumn Header="Объект недвижимости" Binding="{Binding Adress}" />
+                <DataGridTextColumn Header="Мин Цена" Binding="{Binding MinPrice}" />
+                <DataGridTextColumn Header="Макс Цена" Binding="{Binding MaxPrice}" />
+                <DataGridTextColumn Header="Клиент" Binding="{Binding FullClient}" />
+                <DataGridTextColumn Header="Агент" Binding="{Binding FullAgent}" />
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Column="2" Grid.RowSpan="2" Orientation="Vertical">
+            <Label Content="Сделка" Margin="0,10,0,0" HorizontalContentAlignment="Center" />
+            <Label Content="Предложение" Margin="5,0,0,0"/>
+            <ComboBox x:Name="SupplyCb" SelectionChanged="SupplyCb_SelectionChanged" Margin="10,0"/>
+            <Label Content="Потребность" Margin="5,10,0,0"/>
+            <ComboBox x:Name="DemandCb" SelectionChanged="DemandCb_SelectionChanged" Margin="10,0"/>
+            <Button x:Name="Btn_Deal" Content="Создать сделку" Margin="10,20" Click="Btn_Deal_Click" Width="320"/>
+
+            <!--<Button x:Name="Btn_Rachet" Content="Расчитать комиссию" Margin="10" Click="Btn_Rachet_Click"/>
+            <Label Content="Клиент-продавец" Margin="10"/>
+            <TextBox x:Name="ClientProdavec" Margin="10"/>
+            <Label Content="Клиент-покупатель" Margin="10"/>
+            <TextBox x:Name="ClientPokupatel" Margin="10"/>-->
+        </StackPanel>
+    </Grid>
+</Window>
